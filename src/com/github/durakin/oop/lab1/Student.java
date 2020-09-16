@@ -2,14 +2,14 @@ package com.github.durakin.oop.lab1;
 
 
 public class Student {
-    private final String name;
+    private final String NAME;
     private int score;
     private boolean status;
     private int stip;
     private boolean merit;
 
     Student(String initName, int initScore, int initStip) {
-        name = initName;
+        NAME = initName;
         score = initScore;
         stip = initStip;
         status = true;
@@ -32,8 +32,8 @@ public class Student {
         StudentOffice.checkScore(this);
     }
 
-    public String getName() {
-        return name;
+    public String getNAME() {
+        return NAME;
     }
 
     public void setStatus(boolean status) {
@@ -70,7 +70,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student " + name +
+        return "Student " + NAME +
                 "\nScore: " + score +
                 "\nStatus: " + ((status) ? "Studies" : "Expelled") +
                 "\nScholarship: " + stip + " RUB";

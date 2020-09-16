@@ -10,13 +10,9 @@ public class Main {
         System.out.println();
 
         while (!student.isMerit()) {
-            try {
                 student.goToLecture();
                 System.out.println(student);
                 System.out.println();
-            } catch (RuntimeException exception) {
-                System.out.println(exception.getMessage());
-            }
         }
 
         while (true) {
