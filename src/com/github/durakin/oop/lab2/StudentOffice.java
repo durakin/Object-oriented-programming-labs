@@ -14,7 +14,7 @@ public class StudentOffice {
         BESTGROUPS = new ArrayList<>();
     }
 
-    void AddGroup(StudyGroup groupToAdd) throws RuntimeException {
+    public void AddGroup(StudyGroup groupToAdd) throws RuntimeException {
         if (FindGroup(groupToAdd.getNAME()) != null) {
             throw new RuntimeException("Such group already exists");
         } else {
@@ -22,7 +22,7 @@ public class StudentOffice {
         }
     }
 
-    void AddStudent(Student studentToAdd, String groupName) throws RuntimeException {
+    public void AddStudent(Student studentToAdd, String groupName) throws RuntimeException {
         if (FindGroup(groupName) == null) {
             throw new RuntimeException("No such group");
         } else {
@@ -40,7 +40,7 @@ public class StudentOffice {
     }
 
 
-    void competition() {
+    public void competition() {
         this.BESTSTUDENTS.clear();
         this.BESTGROUPS.clear();
         double bestScore = 0;
@@ -71,6 +71,18 @@ public class StudentOffice {
                 }
             }
         }
+    }
+
+    public ArrayList<Student> getBESTSTUDENTS() {
+        return BESTSTUDENTS;
+    }
+
+    public ArrayList<StudyGroup> getBESTGROUPS() {
+        return BESTGROUPS;
+    }
+
+    public ArrayList<StudyGroup> getSTUDYGROUPS() {
+        return STUDYGROUPS;
     }
 
     @Override

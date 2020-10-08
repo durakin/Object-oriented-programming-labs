@@ -1,7 +1,6 @@
 package com.github.durakin.oop.lab2;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class StudyGroup {
@@ -17,13 +16,13 @@ public class StudyGroup {
         this.STUDENTS.add(student);
     }
 
-    public double score(){
+    public double score() {
         double result = 0;
-        for (Student i:
-             this.STUDENTS) {
+        for (Student i :
+                this.STUDENTS) {
             result += i.score();
         }
-        return result/this.STUDENTS.size();
+        return result / this.STUDENTS.size();
     }
 
     public String getNAME() {

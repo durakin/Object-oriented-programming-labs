@@ -17,12 +17,12 @@ public class Student {
         Random random = new Random();
         this.NAME = name;
         MARKS = new int[NUMBER_OF_MARKS];
-        for (int i = 0; i < NUMBER_OF_MARKS; i++){
+        for (int i = 0; i < NUMBER_OF_MARKS; i++) {
             this.MARKS[i] = MIN_MARK + random.nextInt(MAX_MARK - MIN_MARK);
         }
     }
 
-    public double score(){
+    public double score() {
         var result = Arrays.stream(this.MARKS).average();
         return (result.isPresent()) ? result.getAsDouble() : 0;
     }

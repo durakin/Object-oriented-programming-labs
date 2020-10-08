@@ -1,7 +1,7 @@
 package com.github.durakin.oop.lab2;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         StudentOffice studentOffice = new StudentOffice();
         studentOffice.AddGroup(new StudyGroup("Group 1"));
         studentOffice.AddStudent(new Student("Chloe Price"), "Group 1");
