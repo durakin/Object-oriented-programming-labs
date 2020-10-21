@@ -3,35 +3,36 @@ package com.github.durakin.oop.lab3;
 import java.util.*;
 
 public class StudentOffice {
+
     private static final Map<Teacher, Subject> ASSIGNMENTS = new HashMap<>();
     private static final List<Student> STUDENTS = new ArrayList<>();
 
-    public static void SetAssignment(Teacher teacher, Subject subject) {
+    public static void setAssignment(Teacher teacher, Subject subject) {
         ASSIGNMENTS.put(teacher, subject);
     }
 
-    public static void AddStudent(Student student) {
+    public static void addStudent(Student student) {
         STUDENTS.add(student);
     }
 
-    public static void ExpellStudent(Student student) {
+    public static void expelStudent(Student student) {
         STUDENTS.remove(student);
         System.out.println("Student " + student.getNAME() + " got expelled!\n");
     }
 
-    public static Subject GetAssignment(Teacher teacher) {
+    public static Subject getAssignment(Teacher teacher) {
         return ASSIGNMENTS.get(teacher);
     }
 
-    public static String StudentsToStr() {
-        var result = "";
+    public static String studentsToStr() {
+        var result = new StringBuilder();
         for (Student student : STUDENTS) {
-            result+=student.getNAME() + "\n";
+            result.append(student.getNAME()).append("\n");
         }
-        return result;
+        return result.toString();
     }
 
-    public static void GreatExams() {
+    public static void greatExams() {
         Collections.shuffle(STUDENTS);
 
         for (Student student : STUDENTS) {
@@ -56,7 +57,7 @@ public class StudentOffice {
         for (Student student : new ArrayList<>(STUDENTS)) {
             for (Teacher teacher : ASSIGNMENTS.keySet()) {
                 if (!teacher.getPassed().contains(student)) {
-                    StudentOffice.ExpellStudent(student);
+                    StudentOffice.expelStudent(student);
                 }
             }
         }

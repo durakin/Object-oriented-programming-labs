@@ -1,30 +1,23 @@
 package com.github.durakin.oop.lab3;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Student {
     private final String NAME;
-    private Map<Subject, Integer> Marks;
+    private final Map<Subject, Integer> MARKS;
 
     public Student(String name) {
         NAME = name;
-        Marks = new HashMap<Subject, Integer>();
+        MARKS = new HashMap<>();
     }
 
-    public void SetMark(Subject subject, int mark){
-        Marks.put(subject, mark);
-    }
-
-    public int GetMark(Subject subject)
-    {
-        return Marks.get(subject);
+    public void setMark(Subject subject, int mark) {
+        MARKS.put(subject, mark);
     }
 
     public String getNAME() {
         return NAME;
     }
 
-    public Map<Subject, Integer> getMarks() {
-        return Marks;
-    }
 }

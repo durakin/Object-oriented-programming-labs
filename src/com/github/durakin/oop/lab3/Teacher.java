@@ -27,18 +27,18 @@ public class Teacher {
         return Passed;
     }
 
-    public Queue<Student> getExamQueue() {
-        return ExamQueue;
-    }
-
-    public Queue<Student> getReExamQueue() {
-        return ReExamQueue;
-    }
-
     public void AddToExam(Student student) {
         ExamQueue.add(student);
     }
 
+    private int ExamStudent(Student student) {
+        var random = new Random();
+        var mark = MIN_MARK + random.nextInt(MAX_MARK - MIN_MARK);
+        student.setMark(StudentOffice.getAssignment(this), mark);
+        return mark;
+
+
+    }
 
     public void Examination() {
         while (ExamQueue.peek() != null) {
@@ -56,7 +56,7 @@ public class Teacher {
     }
 
     public void ReExamination() {
-        var NewReExamQueue = new PriorityQueue<Student>(Comparator.comparing(Student::getNAME));
+        var NewReExamQueue = new PriorityQueue<>(Comparator.comparing(Student::getNAME));
         while (ReExamQueue.peek() != null) {
             var student = ReExamQueue.poll();
             var mark = ExamStudent(student);
@@ -72,12 +72,4 @@ public class Teacher {
         ReExamQueue = NewReExamQueue;
     }
 
-    private int ExamStudent(Student student) {
-        var random = new Random();
-        var mark = MIN_MARK + random.nextInt(MAX_MARK - MIN_MARK);
-        student.SetMark(StudentOffice.GetAssignment(this), mark);
-        return mark;
-
-
-    }
 }
