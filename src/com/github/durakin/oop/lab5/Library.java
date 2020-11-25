@@ -5,43 +5,82 @@ import java.util.List;
 
 public class Library {
     private final List<LibraryVisitor> VISITORS;
-    private final List<LedgerEntry> LEDGER;
+    private final List<Book> BOOKS;
 
     public Library() {
         VISITORS = new ArrayList<>();
-        LEDGER = new ArrayList<>();
+        BOOKS = new ArrayList<>();
     }
 
-    public LedgerEntry findLedger(Book book) {
-        for (LedgerEntry ledgerEntry : LEDGER) {
-            if (ledgerEntry.getBOOK() == book) {
-                return ledgerEntry;
+
+    public void addVisitor(LibraryVisitor visitor) throws RuntimeException {
+        if (!VISITORS.contains(visitor)) {
+            VISITORS.add(visitor);
+        } else throw new RuntimeException("Visitor already has a card");
+    }
+
+    public void addBook(Book book) throws RuntimeException {
+        if (!BOOKS.contains(book)) BOOKS.add(book);
+        else throw new RuntimeException("Library already owns this book");
+    }
+
+    public void takeBook(LibraryVisitor visitor, Book book) {
+        if (!BOOKS.contains(book)) {
+            throw new RuntimeException("There is no suсh book in library");
+        }
+        if (visitor.getBOOKS().contains(book)) {
+            throw new RuntimeException("Visitor already has this book");
+        }
+        visitor.getBOOKS().add(book);
+    }
+
+    public void findReaderByTitleBook(String bookName) {
+        System.out.println("Readers of the book " + bookName + ":");
+        Book book = findBookByName(bookName);
+        for (LibraryVisitor i : VISITORS) {
+            if (i.getBOOKS().contains(book)) {
+                System.out.println(i.getLASTNAME());
+            }
+        }
+    }
+
+    public LibraryVisitor findVisitorByLastname(String lastname) {
+        for (LibraryVisitor i : VISITORS) {
+            if (i.getLASTNAME().equals(lastname)) {
+                return i;
             }
         }
         return null;
     }
 
-    public void addVisitor(LibraryVisitor visitor){
-        if(!VISITORS.contains(visitor)){
-            VISITORS.add(visitor);
+    private Book findBookByName(String name) {
+        for (Book i : BOOKS) {
+            if (i.getNAME().equals(name)) {
+                return i;
+            }
         }
+        return null;
     }
 
-    public void addBook(Book book) {
-        LedgerEntry ledger = findLedger(book);
-        if (ledger != null) {
-            ledger.getNUMBER().addAndGet(1);
+    public String findMaxReader() {
+        List<LibraryVisitor> resultList = new ArrayList();
+        int maxBooks = 0;
+        for (LibraryVisitor i : VISITORS) {
+            if (i.getBOOKS().size() == maxBooks) {
+                resultList.add(i);
+            }
+
+            if (i.getBOOKS().size() > maxBooks) {
+                maxBooks = i.getBOOKS().size();
+                resultList.clear();
+                resultList.add(i);
+            }
         }
-        else {
-            LEDGER.add(new LedgerEntry(book));
+        StringBuilder result = new StringBuilder();
+        for (LibraryVisitor i : resultList) {
+            result.append(i.getLASTNAME()).append("\n");
         }
+        return result.toString();
     }
-
-
-
-    private boolean takeBook(Book )
-
-
-
 }
 

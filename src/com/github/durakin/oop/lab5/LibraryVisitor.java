@@ -7,14 +7,14 @@ public abstract class LibraryVisitor {
     private final String LASTNAME;
     private final List<Book> BOOKS;
 
-    public abstract void printBooks();
-
     public LibraryVisitor(String LASTNAME) {
         this.LASTNAME = LASTNAME;
         this.BOOKS = new ArrayList<>();
     }
 
-    public void addBook(Book book){
+    public abstract void printBooks();
+
+    public void addBook(Book book) {
         BOOKS.add(book);
     }
 
