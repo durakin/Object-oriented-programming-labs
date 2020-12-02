@@ -20,11 +20,13 @@ public class Library {
     }
 
     public void addBook(Book book) throws RuntimeException {
-        if (!BOOKS.contains(book)) BOOKS.add(book);
-        else throw new RuntimeException("Library already owns this book");
+        if (this.findBookByName(book.getNAME()) != null){
+            throw new RuntimeException("Library already owns this book");
+        }
+        BOOKS.add(book);
     }
 
-    public void takeBook(LibraryVisitor visitor, Book book) {
+    public void takeBook(LibraryVisitor visitor, Book book)throws RuntimeException {
         if (!BOOKS.contains(book)) {
             throw new RuntimeException("There is no suсh book in library");
         }

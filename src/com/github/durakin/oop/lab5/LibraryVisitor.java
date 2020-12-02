@@ -14,10 +14,6 @@ public abstract class LibraryVisitor {
 
     public abstract void printBooks();
 
-    public void addBook(Book book) {
-        BOOKS.add(book);
-    }
-
     public String getLASTNAME() {
         return LASTNAME;
     }
