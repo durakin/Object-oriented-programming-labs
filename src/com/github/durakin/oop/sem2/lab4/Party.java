@@ -13,9 +13,9 @@ public class Party {
         this.lastGivenNumber = 0;
     }
 
-    public int addMember(String name, String lastName) {
+    public int addMember(String name, String lastName, boolean isForeign) {
         int cardNumber = ++this.lastGivenNumber;
-        this.MEMBERS.put(cardNumber, new PartyMember(cardNumber, name, lastName));
+        this.MEMBERS.put(cardNumber, new PartyMember(cardNumber, name, lastName, isForeign));
         return this.lastGivenNumber;
     }
 

@@ -1,0 +1,59 @@
+https://sequencediagram.org/
+
+
+actor Пользователь
+
+Пользователь ->ConsoleUI:Вводит команду Register property
+activate ConsoleUI
+ConsoleUI -> Пользователь:Сообщает об ожидании ввода\n номера партбилета и кода\nдокумента о собственности
+deactivate ConsoleUI
+Пользователь-->ConsoleUI:Вводит номер партбилета и кода\nдокумента о собственности
+activate ConsoleUI
+ConsoleUI->Controller:Команда добавления\nи результат консольного ввода аргументов
+activate Controller
+Controller->Party:Добавление собственности
+activate Party
+Party-->Controller:Отчет об успешности
+deactivate Party
+Controller-->ConsoleUI:Отчет об успешности
+deactivate Controller
+ConsoleUI-->Пользователь:Сообщение об успешности
+deactivate ConsoleUI
+
+
+
+Пользователь->ConsoleUI:Вводит команду Add member
+activate ConsoleUI
+ConsoleUI -> Пользователь:Сообщает об ожидании ввода\n имени и фамилии нового члена
+deactivate ConsoleUI
+Пользователь-->ConsoleUI:Вводит имя и фамилию нового\nчлена
+activate ConsoleUI
+ConsoleUI->Controller:Команда добавления нового члена парти\nи результат консольного ввода аргументов
+activate Controller
+Controller->Party:Добавление члена партии
+activate Party
+Party-->Controller:Номер присовенного партбилете
+deactivate Party
+Controller-->ConsoleUI:Содержание сообщения о добавлении
+deactivate Controller
+ConsoleUI-->Пользователь:Сообщение о добавлении
+deactivate ConsoleUI
+
+
+
+Пользователь->ConsoleUI:Вводит команду Get report
+activate ConsoleUI
+ConsoleUI -> Пользователь:Сообщает об ожидании ввода\n номера партбилета члена партии
+deactivate ConsoleUI
+Пользователь-->ConsoleUI:Вводит номер партбилета
+activate ConsoleUI
+ConsoleUI->Controller:Команда подготовки отчета\nи результат консольного ввода аргументов
+activate Controller
+Controller->Party:Составление отчета
+activate Party
+Party-->Controller:Отчет о члене партии или\nо факте его отсутствия
+deactivate Party
+Controller-->ConsoleUI:Содержание отчета
+deactivate Controller
+ConsoleUI-->Пользователь:Отчет
+deactivate ConsoleUI

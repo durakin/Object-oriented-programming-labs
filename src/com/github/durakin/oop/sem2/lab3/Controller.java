@@ -14,11 +14,6 @@ public class Controller {
     }
 
     public static boolean addProperty(int cardNumber, String assetDocumentCode) {
-        try {
-            party.addProperty(cardNumber, assetDocumentCode);
-            return true;
-        } catch (RuntimeException runtimeException) {
-            return false;
-        }
+            return party.addProperty(cardNumber, assetDocumentCode);
     }
 }

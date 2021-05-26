@@ -24,10 +24,13 @@ public class Party {
         return (partyMember != null) ? partyMember.toString() : null;
     }
 
-    public void addProperty(int cardNumber, String assetDocumentCode) throws RuntimeException {
+    public boolean addProperty(int cardNumber, String assetDocumentCode) {
         PartyMember partyMember = MEMBERS.get(cardNumber);
-        if (partyMember == null) throw new RuntimeException("Such card of party member doesn't exist");
+        if (partyMember == null) {
+            return false;
+        }
         partyMember.addProperty(assetDocumentCode);
+        return true;
     }
 
     @Override

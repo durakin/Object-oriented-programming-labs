@@ -36,6 +36,19 @@ public class ConsoleUI {
         return scanner.nextLine();
     }
 
+    private Boolean askBool(String stringToOutput) {
+        System.out.println(stringToOutput + " Y/N");
+        while (true) {
+            String readLine = scanner.nextLine();
+            if (readLine.equals("Y")) {
+                return true;
+            }
+            if (readLine.equals("N")) {
+                return false;
+            }
+        }
+    }
+
     private String waitForCommand(String stringToOutput, List<String> listOfCommands) {
         System.out.println(stringToOutput);
         while (true) {
@@ -66,7 +79,8 @@ public class ConsoleUI {
             if (readCommand.equals("Add member")) {
                 String name = askString("name");
                 String lastname = askString("lastname");
-                System.out.println("Member added, party card number: " + Controller.getInstance().addMember(name, lastname));
+                boolean isForeign = askBool("Is foreign?");
+                System.out.println("Member added, party card number: " + Controller.getInstance().addMember(name, lastname, isForeign));
             }
 
             if (readCommand.equals("Register property")) {

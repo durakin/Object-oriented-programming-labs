@@ -9,16 +9,18 @@ public class PartyMember {
     private final String NAME;
     private final String LAST_NAME;
     private final List<Asset> ASSETS;
+    private final AssetFactory ASSET_FACTORY;
 
-    public PartyMember(int CARD_NUMBER, String NAME, String LAST_NAME) {
+    public PartyMember(int CARD_NUMBER, String NAME, String LAST_NAME, boolean isForeign) {
         this.CARD_NUMBER = CARD_NUMBER;
         this.NAME = NAME;
         this.LAST_NAME = LAST_NAME;
         this.ASSETS = new ArrayList<>();
+        this.ASSET_FACTORY = isForeign ? new ForeignAssetFactory() : new LocalAssetFactory();
     }
 
     public void addProperty(String assetDocumentCode) {
-        this.ASSETS.add(new Asset(assetDocumentCode));
+        this.ASSETS.add(ASSET_FACTORY.createAsset(assetDocumentCode));
     }
 
     @Override

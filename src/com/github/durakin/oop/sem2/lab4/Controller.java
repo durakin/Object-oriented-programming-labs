@@ -16,8 +16,8 @@ public class Controller {
         return uniqueInstance == null ? new Controller() : uniqueInstance;
     }
 
-    public int addMember(String name, String lastname) {
-        return party.addMember(name, lastname);
+    public int addMember(String name, String lastname, boolean isForeign) {
+        return party.addMember(name, lastname, isForeign);
     }
 
     public String partyMemberReportByCard(int cardNumber) {
